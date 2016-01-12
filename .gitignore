@@ -12,3 +12,5 @@
 /WebContent/unitime
 /WebContent/WEB-INF/deploy
 .idea/
+WebContent/UniTime.war
+unitime.iml
