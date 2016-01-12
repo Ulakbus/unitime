@@ -52,6 +52,7 @@ import org.unitime.timetable.interfaces.ExternalSolutionCommitAction;
 import org.unitime.timetable.interfaces.ExternalUidLookup;
 import org.unitime.timetable.interfaces.ExternalUidTranslation;
 import org.unitime.timetable.interfaces.RoomAvailabilityInterface;
+import org.unitime.timetable.onlinesectioning.OnlineSectioningActionFactory;
 import org.unitime.timetable.onlinesectioning.OnlineSectioningServer;
 import org.unitime.timetable.onlinesectioning.custom.CourseDetailsProvider;
 import org.unitime.timetable.onlinesectioning.custom.CourseMatcherProvider;
@@ -1066,8 +1067,23 @@ public enum ApplicationProperty {
 	@Type(Class.class)
 	@Implements(DegreePlansProvider.class)
 	@Description("Customization: student degree plans provider (interface DegreePlansProvider, used by Student Scheduling Assistant to retrieve degree plans)")
+	@Since(4.1)
 	CustomizationDegreePlans("unitime.custom.DegreePlansProvider"),
 	
+	@Type(Class.class)
+	@Implements(OnlineSectioningActionFactory.class)
+	@DefaultValue("org.unitime.timetable.onlinesectioning.server.CustomActionFactory")
+	@Description("Customization: online student scheduling action factory (interface OnlineSectioningActionFactory, used by the online student scheduling server to create an action)")
+	@Since(4.1)
+	CustomizationOnlineSectioningActionFactory("unitime.custom.OnlineSectioningActionFactory"),
+	
+	@Type(Class.class)
+	@Implements(OnlineSectioningActionFactory.class)
+	@Description("Customization: custom implementation of the online scheduling server action % (only works when unitime.custom.OnlineSectioningActionFactory is set to org.unitime.timetable.onlinesectioning.server.CustomActionFactory)")
+	@Parameter("Simple class name of the action to be replaced by a custom implementation")
+	@Since(4.1)
+	CustomOnlineSchedulingAction("unitime.custom.action.%"),
+
 	@Type(Class.class)
 	@Implements(ExternalTermProvider.class)
 	@Description("Customization: external term provider (interface ExternalTermProvider converting academic session info into an external term string etc.)")
@@ -1351,6 +1367,11 @@ public enum ApplicationProperty {
 	@DefaultValue("5000")
 	@Description("Query Log: limit on the number of queries held in memory (before persisted)")
 	QueryLogLimit("unitime.query.log.limit"),
+	
+	@Type(Boolean.class)
+	@DefaultValue("true")
+	@Description("Query Log: record request object/parameters as JSON message")
+	QueryLogJSON("unitime.query.log.json"),
 
 	@Type(Boolean.class)
 	@DefaultValue("false")
@@ -2045,9 +2066,14 @@ public enum ApplicationProperty {
 	
 	@Type(Boolean.class)
 	@DefaultValue("false")
-	@Description("Legacy: switch the user interface back to the old (Struts-based) rooms pages")
+	@Description("Rooms: switch the user interface back to the old (Struts-based) rooms pages")
 	LegacyRooms("unitime.legacy.rooms"),
 		
+	@Type(Boolean.class)
+	@DefaultValue("false")
+	@Description("Examinations: switch the user interface back to the old period preferences")
+	LegacyPeriodPreferences("unitime.legacy.periodPrefs"),
+
 	@Type(Integer.class)
 	@DefaultValue("998")
 	@Description("Maximum number of classes a scheduling subpart can contain.  Defaults to 998.")

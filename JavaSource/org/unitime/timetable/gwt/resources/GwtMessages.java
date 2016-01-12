@@ -30,10 +30,10 @@ public interface GwtMessages extends Messages {
 	@DefaultMessage("Version {0} built on {1}")
 	String pageVersion(String version, String buildDate);
 	
-	@DefaultMessage("&copy; 2008 - 2015 The Apereo Foundation,<br>distributed under the Apache License, Version 2.")
+	@DefaultMessage("&copy; 2008 - 2016 The Apereo Foundation,<br>distributed under the Apache License, Version 2.")
 	String pageCopyright();
 	
-	@DefaultMessage("UniTime {0}, \u00A9 2008 - 2015 The Apereo Foundation, distributed under the Apache License.")
+	@DefaultMessage("UniTime {0}, \u00A9 2008 - 2016 The Apereo Foundation, distributed under the Apache License.")
 	String pdfCopyright(String version);
 	
 	@DefaultMessage("Oooops, the loading is taking too much time... Something probably went wrong. You may need to reload this page.")
@@ -2567,7 +2567,7 @@ public interface GwtMessages extends Messages {
 	@DefaultMessage("Confirmation")
 	String dialogConfirmation();
 	
-	@DefaultMessage("Alert")
+	@DefaultMessage("Warning")
 	String dialogAlert();
 	
 	@DefaultMessage("Details of {0}")
@@ -4116,4 +4116,10 @@ public interface GwtMessages extends Messages {
 	@DefaultMessage("{1} {0}")
 	@DoNotTranslate
 	String roomPreferenceShort(String department, String preference);
+	
+	@DefaultMessage("Application of required preference will remove all not required preferences.")
+	String warnPreferenceUseRequired();
+	
+	@DefaultMessage("Application of this preference will remove all required preferences.")
+	String warnPreferenceUseNotRequired();
 }

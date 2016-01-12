@@ -74,6 +74,7 @@ public class CalendarUtils {
 	public static Date dateOfYear2date(int sessionYear, int dayOfYear) {
 		Calendar c = Calendar.getInstance(Locale.US);
 		c.set(sessionYear, 11, 31, 0, 0, 0);
+		c.set(Calendar.MILLISECOND, 0);
 		if (dayOfYear <= 0) {
 			c.set(Calendar.YEAR, sessionYear - 1);
 			dayOfYear += c.get(Calendar.DAY_OF_YEAR);
