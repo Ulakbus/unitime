@@ -47,6 +47,9 @@ public interface StudentSectioningResources extends ClientBundle {
 	@Source("org/unitime/timetable/gwt/resources/icons/search_picker_Disabled.png")
 	ImageResource search_picker_Disabled();
 
+	@Source("org/unitime/timetable/gwt/resources/icons/search_picker_Assigned.png")
+	ImageResource search_picker_Assigned();
+
 	@Source("org/unitime/timetable/gwt/resources/icons/search_picker_Down.png")
 	ImageResource search_picker_Down();
 
@@ -145,4 +148,19 @@ public interface StudentSectioningResources extends ClientBundle {
 	
 	@Source("org/unitime/timetable/gwt/resources/icons/add.png")
 	ImageResource quickAddCourse();
+
+	@Source("org/unitime/timetable/gwt/resources/icons/arrow_left.png")
+	ImageResource arrowBack();
+
+	@Source("org/unitime/timetable/gwt/resources/icons/arrow_right.png")
+	ImageResource arrowForward();
+	
+	@Source("org/unitime/timetable/gwt/resources/icons/info.png")
+	ImageResource statusInfo();
+	
+	@Source("org/unitime/timetable/gwt/resources/icons/warn.png")
+	ImageResource statusWarning();
+
+	@Source("org/unitime/timetable/gwt/resources/icons/alert.png")
+	ImageResource statusError();
 }
